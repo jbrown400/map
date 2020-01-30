@@ -1,5 +1,6 @@
 from tkinter import *
-from tkinter.ttk import *
+from tkinter import ttk
+
 import tkinter.font as font
 import RPi.GPIO as GPIO
 
@@ -23,7 +24,15 @@ def test():
     print("Testing button")
     
     
-btn = Button(window, text="Test", font = myFont, command = test, height = 2, width = 6)
+
+    
+# btn = Button(window, text="Test", font = myFont, command = test, height = 2, width = 6)
+
+style = ttk.Style()
+style.configure("BW.Button", foreground="white", background="black")
+
+btn = ttk.Button(text="Test")
+
 btn.pack(side = BOTTOM)
 
 # Properly shut down the program if the user uses the "X" button on the window
