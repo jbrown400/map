@@ -5,10 +5,10 @@ This repo houses the code for light up map that will show all the countries I've
 
 
 # Tech Stack
-Python
-(insert DB I choose here)
+* Python
+* (insert DB I choose here)
 
 # Hardware
-Raspberry Pi
-Lots of wires, small breadboards, LED's
-A lot of SN74HC595N Shift Registers
+* Raspberry Pi
+* Lots of wires, small breadboards, LED's
+* A lot of SN74HC595N Shift Registers
