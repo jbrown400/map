@@ -1,2 +1,7 @@
 shift_register.py
 test.py
+
+.idea/
+page/migrations/
+
+page/__pycache__/
