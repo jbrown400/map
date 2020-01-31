@@ -31,7 +31,11 @@
 						</div>
 						<div>
 							<label class="switch">
-								<input type="checkbox"/>
+								{% if country.visited == True %}
+									<input type="checkbox" checked/>
+								{% else %}
+									<input type="checkbox"/>
+								{% endif %}
 								<span class="slider round"></span>
 							</label>
 						</div>

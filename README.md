@@ -6,7 +6,10 @@ This repo houses the code for light up map that will show all the countries I've
 
 # Tech Stack
 * Python
-* (insert DB I choose here)
+* Django
+* JS
+* Raspberry Pi GPIO interface
+* SQLite
 
 # Hardware
 * Raspberry Pi
