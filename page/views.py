@@ -1,6 +1,5 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render
 from .models import Continent, Country
-from .forms import VisitedForm
 
 
 # Populate the main page
@@ -9,12 +8,17 @@ def index(request):
 	countries = Country.objects.all()
 
 	if request.method == "POST":
-		print(request.POST.getlist('visited'))
-
+		# Update the entries in the DB
 		for s in request.POST.getlist('visited'):
 			c = Country.objects.get(name=s)
 			c.visited = True
 			c.save()
+
+		# Uncheck any missing values
+		for c in countries:
+			if c.name not in request.POST.getlist('visited'):
+				c.visited = False
+				c.save()
 
 	context = {
 		'continents': continents,

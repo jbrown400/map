@@ -32,15 +32,15 @@
 							{{ country }}
 						</div>
 						<div>
-								{% csrf_token %}
-								<label class="switch">
-									{% if country.visited == True %}
-										<input type="checkbox" name="visited" value="{{country}}" checked onChange="this.form.submit()"/>
-									{% else %}
-										<input type="checkbox" name="visited" value="{{country}}" onChange="this.form.submit()"/>
-									{% endif %}
-									<span class="slider round"></span>
-								</label>
+							{% csrf_token %}
+							<label class="switch">
+								{% if country.visited == True %}
+									<input type="checkbox" name="visited" value="{{country}}" checked onChange="this.form.submit()"/>
+								{% else %}
+									<input type="checkbox" name="visited" value="{{country}}" onChange="this.form.submit()"/>
+								{% endif %}
+								<span class="slider round"></span>
+							</label>
 						</div>
 					</li>
 				{% endfor %}
