@@ -5,10 +5,13 @@
 		<link rel="stylesheet" type="text/css" href="{% static 'page/style.css' %}">
 		<link rel="stylesheet" type="text/css" href="{% static 'page/chevron.css' %}">
 		<link rel="stylesheet" type="text/css" href="{% static 'page/slider.css' %}">
-		<script src="{% static 'page/script.js' %}"></script>
+		<script src="{% static 'page/script.js' %}">
+			var continents = {{ continents }};
+			console.log( "Hello" );
+		</script>
 		<title>Map</title>
 	</head>
-	<body>
+	<body onload="show()">
 		<div class="container">
 			<div id="continents">
 				{% for continent in continents %}
@@ -26,7 +29,7 @@
 			<div id="countries">
 				{% for country in countries %}
 					<li>
-						<div >
+						<div>
 							{{ country }}
 						</div>
 						<div>

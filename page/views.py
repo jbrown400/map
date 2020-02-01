@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from .models import Continent, Country
 
 # Populate the main page
@@ -11,6 +11,12 @@ def index(request):
 		'countries': countries
 	}
 	return render(request, 'page/index.html', context)
+
+
+def visit(request, id):
+	country = get_object_or_404(Country, pk=id)
+
+	return
 
 
 # Takes a continent and returns all the countries in that continent
