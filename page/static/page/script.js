@@ -37,3 +37,11 @@ function showCountries(id) {
 	}
 	console.log("Clicked: " + id)
 }
+
+
+//$(document).ready(function(){
+//    $("#visited_form").on("change", "input:checkbox", function(){
+//    	console.log("Submitting form")
+//        $("#visited_form").submit();
+//    });
+//});

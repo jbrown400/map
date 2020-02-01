@@ -5,17 +5,15 @@
 		<link rel="stylesheet" type="text/css" href="{% static 'page/style.css' %}">
 		<link rel="stylesheet" type="text/css" href="{% static 'page/chevron.css' %}">
 		<link rel="stylesheet" type="text/css" href="{% static 'page/slider.css' %}">
-		<script src="{% static 'page/script.js' %}">
-			var continents = {{ continents }};
-			console.log( "Hello" );
-		</script>
+		<script src="{% static 'page/script.js' %}"></script>
+		<script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
 		<title>Map</title>
 	</head>
-	<body onload="show()">
+	<body>
 		<div class="container">
 			<div id="continents">
 				{% for continent in continents %}
-					<li onclick="clicked({{ continent.id }} )">
+					<li onclick="showCountries({{ continent.id }} )">
 						<div>
 							{{ continent }}
 						</div>
@@ -27,23 +25,26 @@
 			</div>
 			<hr>
 			<div id="countries">
+				<form action="." method="POST" id="visited_form" >
 				{% for country in countries %}
 					<li>
 						<div>
 							{{ country }}
 						</div>
 						<div>
-							<label class="switch">
-								{% if country.visited == True %}
-									<input type="checkbox" checked/>
-								{% else %}
-									<input type="checkbox"/>
-								{% endif %}
-								<span class="slider round"></span>
-							</label>
+								{% csrf_token %}
+								<label class="switch">
+									{% if country.visited == True %}
+										<input type="checkbox" name="visited" value="{{country}}" checked onChange="this.form.submit()"/>
+									{% else %}
+										<input type="checkbox" name="visited" value="{{country}}" onChange="this.form.submit()"/>
+									{% endif %}
+									<span class="slider round"></span>
+								</label>
 						</div>
 					</li>
 				{% endfor %}
+				</form>
 			</div>
 		</div>
 	</body>
