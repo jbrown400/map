@@ -5,3 +5,10 @@ test.py
 page/migrations/
 
 page/__pycache__/
+
+
+bower_components/
+node_modules/
+package-lock.json
+page/static/page/semantic/
+semantic.json

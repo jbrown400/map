@@ -7,12 +7,21 @@ def index(request):
 	continents = Continent.objects.all()
 	countries = Country.objects.all()
 
+	sum = 0
+
 	if request.method == "POST":
 		# Update the entries in the DB
 		for s in request.POST.getlist('visited'):
 			c = Country.objects.get(name=s)
 			c.visited = True
 			c.save()
+			# TO DO!!! Figure out how to split this up by continent
+			# Sum values to be sent to shift registers
+			sum += pow(2, c.power)
+
+		# Send value to shift registers (Can I just import RPi.GPIO in the django project?
+
+
 
 		# Uncheck any missing values
 		for c in countries:
@@ -25,17 +34,3 @@ def index(request):
 		'countries': countries,
 	}
 	return render(request, 'page/base.html', context)
-
-
-def visit(request):
-	print("testing")
-
-	# country = get_object_or_404(Country, pk=id)
-
-	return render(request, 'page/base.html')
-
-
-# Takes a continent and returns all the countries in that continent
-def getCountries(continent):
-	print(continent)
-	return

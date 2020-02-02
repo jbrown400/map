@@ -5,20 +5,27 @@
 		<link rel="stylesheet" type="text/css" href="{% static 'page/style.css' %}">
 		<link rel="stylesheet" type="text/css" href="{% static 'page/chevron.css' %}">
 		<link rel="stylesheet" type="text/css" href="{% static 'page/slider.css' %}">
+		<link rel="stylesheet" type="text/css" href="{% static 'page/semantic/dist/semantic.min.css' %}">
 		<script src="{% static 'page/script.js' %}"></script>
-		<script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+		<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+
+		<script
+		  src="https://code.jquery.com/jquery-3.1.1.min.js"
+		  integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+		  crossorigin="anonymous"></script>
+		<script src="semantic/dist/semantic.min.js"></script>
 		<title>Map</title>
 	</head>
 	<body>
 		<div class="container">
 			<div id="continents">
 				{% for continent in continents %}
-					<li onclick="showCountries({{ continent.id }} )">
+					<li onclick="showCountries({{ continent.id }})">
 						<div>
 							{{ continent }}
 						</div>
 						<div>
-							<span class="chevron right"></span>
+							<i class="right triangle icon"></i>
 						</div>
 					</li>
 				{% endfor %}
@@ -26,7 +33,7 @@
 			<hr>
 			<div id="countries">
 				<form action="." method="POST" id="visited_form" >
-				{% for country in countries %}
+				{% for country in countries  %}
 					<li>
 						<div>
 							{{ country }}

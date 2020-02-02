@@ -34,6 +34,10 @@ body {
     justify-content: space-between;
 }
 
+.continent_chevrons {
+	visibility:hidden;
+}
+
 #countries {
 	flex-grow: 2;
 	margin: 2%;
