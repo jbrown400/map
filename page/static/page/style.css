@@ -1,19 +1,15 @@
-
-body {
-	background-color: #D8CDBC;
+html, body {
+    height: 100%;
 	overflow-y: hidden;
 }
 
 .container {
 	display: flex;
 	flex-direction: row;
-	justify-content: space-around;
+	justify-content: space-between;
 	height: 100vh;
-
 	color: black;
-
 	font-family: "Lucida Console", Monaco, monospace;
-
 	list-style-type: none;
 }
 
@@ -24,29 +20,24 @@ body {
 	margin-left:2%;
 }
 
-#continents li {
-	/* Since I know I'll only have 7 items in this list */
+#continents .item {
 	height: 14vh;
-
 	display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
 }
 
-.continent_chevrons {
-	visibility:hidden;
-}
-
 #countries {
-	flex-grow: 2;
+	flex-grow: 1;
+	flex-basis: 33%;
 	margin: 2%;
-	height: 90vh;
+	height: 92vh;
 	overflow: hidden;
 	overflow-y: scroll;
 }
 
-#countries li {
+#countries .item {
 	display: flex;
 	flex-direction: row;
     align-items: center;
@@ -54,15 +45,4 @@ body {
 	margin-right: 3%;
 	height: 8%;
 	min-height: 8%;
-}
-
-hr {
-	display: block;
-    content: "";
-    height: 100%;
-    margin-top: -31px;
-    border-style: solid;
-    border-color: black;
-    border-width: 0 0 8px 0;
-    border-radius: 20px;
 }

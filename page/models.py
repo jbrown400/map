@@ -21,7 +21,7 @@ class Country(models.Model):
 	# the corresponding LEDs
 	power = models.IntegerField(default=0)
 
-	def toggleVisited(self):
+	def toggle_visited(self):
 		self.visited = (not self.visited)
 
 	def __str__(self):

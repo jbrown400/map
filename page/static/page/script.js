@@ -16,39 +16,55 @@ function show() {
 }
 
 function showCountries(id) {
+	var na = document.getElementsByClassName("continent_item")
+	for (var i = 0; i < na.length; i++) {
+		na[i].style["display"] = "none";
+	}
 	switch (id) {
 		case 1: // North America
-			document.getElementById("1_span").style["visibility"] = "visible";
+//			document.getElementById("1_span").style["visibility"] = "visible";
+			var na = document.getElementsByClassName("continent_1")
+			for (var i = 0; i < na.length; i++) {
+				na[i].style["display"] = "flex";
+			}
 			break;
 		case 2: // South America
-			document.getElementById("2_span").style["visibility"] = "visible";
+			var sa = document.getElementsByClassName("continent_2")
+			for (var i = 0; i < sa.length; i++) {
+				sa[i].style["display"] = "flex";
+			}
 			break;
 		case 3: // Europe
-			document.getElementById("3_span").style["visibility"] = "visible";
+			var eu = document.getElementsByClassName("continent_3")
+			for (var i = 0; i < eu.length; i++) {
+				eu[i].style["display"] = "flex";
+			}
 			break;
 		case 4: // Africa
-			document.getElementById("4_span").style["visibility"] = "visible";
+			var af = document.getElementsByClassName("continent_4")
+			for (var i = 0; i < af.length; i++) {
+				af[i].style["display"] = "flex";
+			}
 			break;
 		case 5: // Asia
-			document.getElementById("5_span").style["visibility"] = "visible";
+			var as = document.getElementsByClassName("continent_5")
+			for (var i = 0; i < as.length; i++) {
+				as[i].style["display"] = "flex";
+			}
 			break;
 		case 6: // Australia and Oceania
-			document.getElementById("6_span").style["visibility"] = "visible";
+			var au = document.getElementsByClassName("continent_6")
+			for (var i = 0; i < au.length; i++) {
+				au[i].style["display"] = "flex";
+			}
 			break;
 		case 7: // Antarctica
-			document.getElementById("7_span").style["visibility"] = "visible";
+			var an = document.getElementsByClassName("continent_7")
+			for (var i = 0; i < an.length; i++) {
+				an[i].style["display"] = "flex";
+			}
 			break;
 		default: // Default to NA
 			break;
-
 	}
-	console.log("Clicked: " + id)
 }
-
-
-//$(document).ready(function(){
-//    $("#visited_form").on("change", "input:checkbox", function(){
-//    	console.log("Submitting form")
-//        $("#visited_form").submit();
-//    });
-//});

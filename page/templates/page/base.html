@@ -13,43 +13,40 @@
 		  src="https://code.jquery.com/jquery-3.1.1.min.js"
 		  integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
 		  crossorigin="anonymous"></script>
-		<script src="semantic/dist/semantic.min.js"></script>
+		<script src="{% static 'page/semantic/dist/semantic.min.js' %}"></script>
 		<title>Map</title>
 	</head>
 	<body>
 		<div class="container">
-			<div id="continents">
+			<div id="continents" class="ui divided huge list selection ">
 				{% for continent in continents %}
-					<li onclick="showCountries({{ continent.id }})">
-						<div>
+					<div class="item" onclick="showCountries({{ continent.id }})">
+						<div class="content">
 							{{ continent }}
 						</div>
-						<div>
-							<i class="right triangle icon"></i>
+						<div class="right floated content">
+							<i class="angle right icon"></i>
 						</div>
-					</li>
+					</div>
 				{% endfor %}
 			</div>
-			<hr>
-			<div id="countries">
-				<form action="." method="POST" id="visited_form" >
-				{% for country in countries  %}
-					<li>
-						<div>
+			<div id="countries" class="ui divided huge list">
+				<form action="." method="POST" id="visited_form">
+				{% csrf_token %}
+				{% for country in countries %}
+					<div class="item continent_item continent_{{country.continent.id}}">
+						<div class="content right floated">
 							{{ country }}
 						</div>
-						<div>
-							{% csrf_token %}
-							<label class="switch">
-								{% if country.visited == True %}
-									<input type="checkbox" name="visited" value="{{country}}" checked onChange="this.form.submit()"/>
-								{% else %}
-									<input type="checkbox" name="visited" value="{{country}}" onChange="this.form.submit()"/>
-								{% endif %}
-								<span class="slider round"></span>
-							</label>
+						<div class="ui toggle checkbox">
+							{% if country.visited == True %}
+								<input type="checkbox" name="visited" value="{{country}}" checked onChange="this.form.submit()"/>
+							{% else %}
+								<input type="checkbox" name="visited" value="{{country}}" onChange="this.form.submit()"/>
+							{% endif %}
+							<label></label>
 						</div>
-					</li>
+					</div>
 				{% endfor %}
 				</form>
 			</div>
