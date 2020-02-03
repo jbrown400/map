@@ -21,13 +21,10 @@
 			</div>
 			<div id="continents" class="ui divided huge list selection ">
 				{% for continent in continents %}
-					<div class="item" onclick="showCountries({{ continent.id }})">
+					<div class="item" id="c_{{continent.id}}" onclick="showCountries({{ continent.id }})">
 						<div class="content left floated">
 							{{ continent }}
 						</div>
-						<!--<div class="content">-->
-							<!--<i class="angle right icon"></i>-->
-						<!--</div>-->
 					</div>
 				{% endfor %}
 			</div>
