@@ -7,7 +7,7 @@ from .models import Continent, Country
 # Populate the main page
 def index(request):
 	continents = Continent.objects.all()
-	countries = Country.objects.all()
+	countries = Country.objects.all().order_by('continent_id', 'name')
 
 	sum = 0
 

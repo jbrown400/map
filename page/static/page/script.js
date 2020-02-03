@@ -80,10 +80,16 @@ function showCountries(id) {
 		case 7: // Antarctica
 			items = document.getElementsByClassName("continent_7")
 			break;
+		case 8: // US
+			items = document.getElementsByClassName("continent_8")
 		default: // Default to NA
 			break;
 	}
 	for (var i = 0; i < items.length; i++) {
 		items[i].style["display"] = "flex";
+		// Hide the flags the show up for states Georgia and New Mexico
+		if (id == 8) {
+			items[i].children[0].children[0].style["visibility"] = "hidden";
+		}
 	}
 }
