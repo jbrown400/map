@@ -1,4 +1,6 @@
 from django.shortcuts import render
+from django.http import JsonResponse
+from django.core import serializers
 from .models import Continent, Country
 
 
@@ -10,10 +12,11 @@ def index(request):
 	sum = 0
 
 	if request.method == "POST":
+		print(request.POST.getlist('visited'))
 		# Update the entries in the DB
 		for s in request.POST.getlist('visited'):
 			c = Country.objects.get(name=s)
-			c.visited = True
+			c.visited = not c.visited # Toggle the value that just changed
 			c.save()
 			# TO DO!!! Figure out how to split this up by continent
 			# Sum values to be sent to shift registers
@@ -21,13 +24,9 @@ def index(request):
 
 		# Send value to shift registers (Can I just import RPi.GPIO in the django project?
 
-
-
-		# Uncheck any missing values
-		for c in countries:
-			if c.name not in request.POST.getlist('visited'):
-				c.visited = False
-				c.save()
+		# Just return empty
+		response_data = {}
+		return JsonResponse(response_data)
 
 	context = {
 		'continents': continents,

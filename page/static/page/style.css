@@ -21,7 +21,7 @@ html, body {
 }
 
 #continents .item {
-	height: 14vh;
+	height: 12.5vh;
 	display: flex;
     flex-direction: row;
     align-items: center;

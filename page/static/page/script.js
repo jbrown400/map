@@ -1,19 +1,31 @@
 
-// Track current continent selection
-var current_continent = 1;
+//$('#visited_form').change(function(e) {
+//      console.log( $(this));
+//      console.log($('#visited'))
+//});
 
-function setContinentsAndCountries(continents, countries) {
-	this.continents = continents;
-	this.countries = countries;
-	console.log("Continents: " + continents);
-	console.log("Countries: " + countries);
-}
+//$('.test').change(function(e) {
+//	console.log($(this).val())
+//});
 
-function show() {
-	console.log("Continents: " + this.continents);
-	console.log("Countries: " + this.countries);
-	console.log(current_continent);
-}
+$('.country_item').change( function(e) {
+	console.log("Running");
+	$.ajax({
+		type:'POST',
+		url: '',
+		data: {
+			visited:$(this).val(),
+			csrfmiddlewaretoken:$('input[name=csrfmiddlewaretoken]').val(),
+			action: 'post'
+		},
+		success: function(json) {
+			console.log("Success");
+		},
+		error: function(xhr, errmsg, err) {
+			console.log(xhr.status + ": " + xhr.responseText);
+		}
+	});
+});
 
 function showCountries(id) {
 	var na = document.getElementsByClassName("continent_item")

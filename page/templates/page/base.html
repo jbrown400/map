@@ -3,17 +3,8 @@
 	<head>
 		<meta charset="utf-8">
 		<link rel="stylesheet" type="text/css" href="{% static 'page/style.css' %}">
-		<link rel="stylesheet" type="text/css" href="{% static 'page/chevron.css' %}">
-		<link rel="stylesheet" type="text/css" href="{% static 'page/slider.css' %}">
 		<link rel="stylesheet" type="text/css" href="{% static 'page/semantic/dist/semantic.min.css' %}">
-		<script src="{% static 'page/script.js' %}"></script>
-		<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 
-		<script
-		  src="https://code.jquery.com/jquery-3.1.1.min.js"
-		  integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
-		  crossorigin="anonymous"></script>
-		<script src="{% static 'page/semantic/dist/semantic.min.js' %}"></script>
 		<title>Map</title>
 	</head>
 	<body>
@@ -40,9 +31,9 @@
 						</div>
 						<div class="ui toggle checkbox">
 							{% if country.visited == True %}
-								<input type="checkbox" name="visited" value="{{country}}" checked onChange="this.form.submit()"/>
+								<input type="checkbox" id="{{country}}" class="country_item" name="visited" value="{{country}}"  checked/>
 							{% else %}
-								<input type="checkbox" name="visited" value="{{country}}" onChange="this.form.submit()"/>
+								<input type="checkbox" id="{{country}}" class="country_item" name="visited" value="{{country}}" />
 							{% endif %}
 							<label></label>
 						</div>
@@ -51,5 +42,13 @@
 				</form>
 			</div>
 		</div>
+
+		<script
+		  src="https://code.jquery.com/jquery-3.1.1.min.js"
+		  integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+		  crossorigin="anonymous"></script>
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+		<script src="{% static 'page/semantic/dist/semantic.min.js' %}"></script>
+		<script src="{% static 'page/script.js' %}"></script>
 	</body>
 </html>
