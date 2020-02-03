@@ -16,7 +16,7 @@ def index(request):
 		# Update the entries in the DB
 		for s in request.POST.getlist('visited'):
 			c = Country.objects.get(name=s)
-			c.visited = not c.visited # Toggle the value that just changed
+			c.visited = not c.visited  # Toggle the value that just changed
 			c.save()
 			# TO DO!!! Figure out how to split this up by continent
 			# Sum values to be sent to shift registers

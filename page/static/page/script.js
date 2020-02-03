@@ -8,7 +8,9 @@
 //	console.log($(this).val())
 //});
 
-$('.country_item').change( function(e) {
+
+// Update the DB without having to refresh the page
+$('.country_input').change( function(e) {
 	console.log("Running");
 	$.ajax({
 		type:'POST',
@@ -27,15 +29,38 @@ $('.country_item').change( function(e) {
 	});
 });
 
+$('#power_btn').click(function() {
+	if($(this).hasClass('green')) {
+		$(this).removeClass('green');
+		$(this).addClass('red');
+	}
+	else {
+		$(this).removeClass('red');
+		$(this).addClass('green');
+   }
+})
+
+$('#full_screen_btn').click(function() {
+	console.log("Hello?");
+	if (document.fullscreenElement) {
+		document.exitFullscreen();
+        console.log("FS active");// fullscreen is activated
+    } else {
+		document.documentElement.requestFullscreen();
+    	console.log("FS inactive")
+        // fullscreen is cancelled
+    }
+})
+
 function showCountries(id) {
-	var na = document.getElementsByClassName("continent_item")
-	for (var i = 0; i < na.length; i++) {
-		na[i].style["display"] = "none";
+	var all = document.getElementsByClassName("country_item")
+	for (var i = 0; i < all.length; i++) {
+		all[i].style["display"] = "none";
 	}
 	switch (id) {
 		case 1: // North America
-//			document.getElementById("1_span").style["visibility"] = "visible";
 			var na = document.getElementsByClassName("continent_1")
+			na.background
 			for (var i = 0; i < na.length; i++) {
 				na[i].style["display"] = "flex";
 			}

@@ -3,21 +3,31 @@
 	<head>
 		<meta charset="utf-8">
 		<link rel="stylesheet" type="text/css" href="{% static 'page/style.css' %}">
+		<link rel="stylesheet" type="text/css" href="{% static 'page/checkbox.css' %}">
 		<link rel="stylesheet" type="text/css" href="{% static 'page/semantic/dist/semantic.min.css' %}">
-
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+		<link rel='stylesheet prefetch' href='http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css'>
 		<title>Map</title>
 	</head>
 	<body>
 		<div class="container">
+			<div id="function_btns">
+				<button id="power_btn" class="ui green basic icon button">
+					<i class="power off icon"></i>
+				</button>
+				<button id="full_screen_btn" class="ui green basic icon button">
+					<i class="expand arrows alternate icon"></i>
+				</button>
+			</div>
 			<div id="continents" class="ui divided huge list selection ">
 				{% for continent in continents %}
 					<div class="item" onclick="showCountries({{ continent.id }})">
-						<div class="content">
+						<div class="content left floated">
 							{{ continent }}
 						</div>
-						<div class="right floated content">
-							<i class="angle right icon"></i>
-						</div>
+						<!--<div class="content">-->
+							<!--<i class="angle right icon"></i>-->
+						<!--</div>-->
 					</div>
 				{% endfor %}
 			</div>
@@ -25,17 +35,22 @@
 				<form action="." method="POST" id="visited_form">
 				{% csrf_token %}
 				{% for country in countries %}
-					<div class="item continent_item continent_{{country.continent.id}}">
-						<div class="content right floated">
+					<div class="item country_item continent_{{country.continent.id}} hidden">
+						<div class="content left floated">
+							<i class="{{country}} flag"></i>
 							{{ country }}
 						</div>
-						<div class="ui toggle checkbox">
+						<div class="content">
 							{% if country.visited == True %}
-								<input type="checkbox" id="{{country}}" class="country_item" name="visited" value="{{country}}"  checked/>
+								<input type="checkbox" id="{{country}}" class="country_input hidden" name="visited" value="{{country}}"  checked/>
 							{% else %}
-								<input type="checkbox" id="{{country}}" class="country_item" name="visited" value="{{country}}" />
+								<input type="checkbox" id="{{country}}" class="country_input hidden" name="visited" value="{{country}}" />
 							{% endif %}
-							<label></label>
+							<label class="check-label" for="{{country}}">
+								<div class="check-box">
+									<i class="fa fa-square-o check-off"></i><i class="fa fa-check check-on"></i>
+								</div>
+							</label>
 						</div>
 					</div>
 				{% endfor %}

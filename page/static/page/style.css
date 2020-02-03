@@ -1,5 +1,6 @@
 html, body {
-    height: 100%;
+    height: 400px;
+    width: 800px;
 	overflow-y: hidden;
 }
 
@@ -7,21 +8,29 @@ html, body {
 	display: flex;
 	flex-direction: row;
 	justify-content: space-between;
-	height: 100vh;
+	height: 400px;
 	color: black;
 	font-family: "Lucida Console", Monaco, monospace;
 	list-style-type: none;
 }
 
+#function_btns {
+	display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    margin: 4%
+}
+
 #continents {
 	flex-grow: 1;
-	height: 100vh;
-	margin-right:5%;
-	margin-left:2%;
+	flex-basis: 33%;
+	height: 400px;
+	margin-right:2%;
 }
 
 #continents .item {
-	height: 12.5vh;
+	height: 50px;
 	display: flex;
     flex-direction: row;
     align-items: center;
@@ -30,19 +39,21 @@ html, body {
 
 #countries {
 	flex-grow: 1;
-	flex-basis: 33%;
-	margin: 2%;
+	flex-basis: 75%;
+	margin-top: 4%;
+	margin-bottom: 4%;
 	height: 92vh;
 	overflow: hidden;
 	overflow-y: scroll;
 }
 
 #countries .item {
-	display: flex;
 	flex-direction: row;
-    align-items: center;
 	justify-content: space-between;
-	margin-right: 3%;
-	height: 8%;
+	height: 15%;
 	min-height: 8%;
+}
+
+.list::-webkit-scrollbar {
+  display: none;
 }
