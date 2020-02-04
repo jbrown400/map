@@ -19,7 +19,9 @@ def index(request):
 	countries = Country.objects.all().order_by('continent_id', 'name')
 
 	if request.method == "POST":
-		
+		if request.POST['action'] == "toggle" and request.POST['toggle'] == 0:
+			single(0)
+			return JsonResponse({})
 		print(request.POST.getlist('visited'))
 		# Update the entries in the DB
 		for s in request.POST.getlist('visited'):
@@ -76,11 +78,11 @@ def shift(val):
 	l = len(binary_string)
 	for j in range(0, (16-l)):
 		binary_string = "0" + binary_string
-        
+
 	print('Binary String: ' + binary_string)
-    
+
 	for i in range(0, len(binary_string)):
-        
+
 		GPIO.output(clockPin, GPIO.LOW)
 		GPIO.output(dataPin, int(binary_string[i]) and GPIO.HIGH or GPIO.LOW)
 

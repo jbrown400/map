@@ -1,14 +1,4 @@
 
-//$('#visited_form').change(function(e) {
-//      console.log( $(this));
-//      console.log($('#visited'))
-//});
-
-//$('.test').change(function(e) {
-//	console.log($(this).val())
-//});
-
-
 // Update the DB without having to refresh the page
 $('.country_input').change( function(e) {
 	console.log("Running");
@@ -29,15 +19,36 @@ $('.country_input').change( function(e) {
 	});
 });
 
+// Send turn off LED's or turn them back on
+// Also change the button color
 $('#power_btn').click(function() {
+	var toggle;
 	if($(this).hasClass('green')) {
 		$(this).removeClass('green');
 		$(this).addClass('red');
+		toggle = 0;
 	}
 	else {
 		$(this).removeClass('red');
 		$(this).addClass('green');
+		toggle = 1;
    }
+
+   $.ajax({
+		type:'POST',
+		url: '',
+		data: {
+			toggle: toggle,
+			csrfmiddlewaretoken:$('input[name=csrfmiddlewaretoken]').val(),
+			action: 'toggle'
+		},
+		success: function(json) {
+			console.log("Success");
+		},
+		error: function(xhr, errmsg, err) {
+			console.log(xhr.status + ": " + xhr.responseText);
+		}
+	});
 })
 
 $('#full_screen_btn').click(function() {
