@@ -54,6 +54,15 @@ html, body {
 	min-height: 8%;
 }
 
+#full_screen_btn {
+	background:transparent;
+    border:none;
+    outline:none;
+	position: absolute;
+	width: 80px;
+	height: 80px;
+}
+
 .list::-webkit-scrollbar {
   display: none;
 }
