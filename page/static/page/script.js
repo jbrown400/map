@@ -43,7 +43,7 @@ $('#power_btn').click(function() {
 			action: 'toggle'
 		},
 		success: function(json) {
-			console.log("Success");
+			console.log("Successful toggle");
 		},
 		error: function(xhr, errmsg, err) {
 			console.log(xhr.status + ": " + xhr.responseText);

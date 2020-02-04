@@ -19,9 +19,11 @@ def index(request):
 	countries = Country.objects.all().order_by('continent_id', 'name')
 
 	if request.method == "POST":
-		if request.POST['action'] == "toggle" and request.POST['toggle'] == 0:
-			single(0)
-			return JsonResponse({})
+		if request.POST['action'] == "toggle":
+			if request.POST['toggle'] == "0":
+				print("Woo!")
+				single(0)
+				return JsonResponse({})
 		print(request.POST.getlist('visited'))
 		# Update the entries in the DB
 		for s in request.POST.getlist('visited'):
