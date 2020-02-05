@@ -34,7 +34,7 @@ def index(request):
 		# Sum values to be sent to shift registers
 		for cou in countries:
 			if (cou.visited is True):
-				sum += pow(2, (cou.id - 1))
+				sum += pow(2, (cou.power - 1))
 
 		# Send value to shift registers (Can I just import RPi.GPIO in the django project?
 		single(sum)
@@ -45,7 +45,7 @@ def index(request):
 
 	for cou in countries:
 		if cou.visited is True:
-			sum += pow(2, (cou.id - 1))
+			sum += pow(2, (cou.power - 1))
 
 	single(sum)
 
