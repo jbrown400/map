@@ -34,7 +34,7 @@ def index(request):
 			
 		# Sum values to be sent to shift registers
 		for cou in countries:
-			code + append_val(cou.visited)
+                        code += append_val(cou.visited)
 			# if (cou.visited is True):
 			# 	sum += pow(2, (cou.power - 1))
 
@@ -46,7 +46,7 @@ def index(request):
 		return JsonResponse(response_data)
 
 	for cou in countries:
-		code + append_val(cou.visited)
+		code += append_val(cou.visited)
 		# if cou.visited is True:
 		# 	sum += pow(2, (cou.power - 1))
 
@@ -80,19 +80,17 @@ def single(val):
 
 def shift(val):
 	# Convert value to binary string and cut off the '0b' in the beginning
-	binary_string = bin(val)[2:]
-	print('Binary String: ' + binary_string)
+	# binary_string = bin(val)[2:]
+	print('Binary String: ' + val)
 
 	# Add leading zeros
-	l = len(binary_string)
-	for j in range(0, (16-l)):
-		binary_string = "0" + binary_string
+	# l = len(binary_string)
+	# for j in range(0, (16-l)):
+		# binary_string = "0" + binary_stringS
 
-	print('Binary String: ' + binary_string)
-
-	for i in range(0, len(binary_string)):
+	for i in range(0, len(val)):
 
 		GPIO.output(clockPin, GPIO.LOW)
-		GPIO.output(dataPin, int(binary_string[i]) and GPIO.HIGH or GPIO.LOW)
+		GPIO.output(dataPin, int(val[i]) and GPIO.HIGH or GPIO.LOW)
 
 		GPIO.output(clockPin, GPIO.HIGH)
