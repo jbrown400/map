@@ -12,6 +12,7 @@ clockPin = 15
 def index(request):
 	setup()
 	sum = 0
+	code = ''
 
 	# GET request code
 	continents = Continent.objects.all()
@@ -21,7 +22,7 @@ def index(request):
 		if request.POST['action'] == "toggle":
 			if request.POST['toggle'] == "0":
 				print("Woo!")
-				single(0)
+				single('0')
 				return JsonResponse({})
 		print(request.POST.getlist('visited'))
 		# Update the entries in the DB
@@ -33,21 +34,23 @@ def index(request):
 			
 		# Sum values to be sent to shift registers
 		for cou in countries:
-			if (cou.visited is True):
-				sum += pow(2, (cou.power - 1))
+			code + append_val(cou.visited)
+			# if (cou.visited is True):
+			# 	sum += pow(2, (cou.power - 1))
 
 		# Send value to shift registers (Can I just import RPi.GPIO in the django project?
-		single(sum)
+		single(code)
 
 		# Just return empty
 		response_data = {}
 		return JsonResponse(response_data)
 
 	for cou in countries:
-		if cou.visited is True:
-			sum += pow(2, (cou.power - 1))
+		code + append_val(cou.visited)
+		# if cou.visited is True:
+		# 	sum += pow(2, (cou.power - 1))
 
-	single(sum)
+	single(code)
 
 	context = {
 		'continents': continents,
@@ -55,6 +58,11 @@ def index(request):
 	}
 	return render(request, 'page/base.html', context)
 
+def append_val(visited):
+	if visited is True:
+		return '1'
+	else:
+		return '0'
 
 def setup():
 	GPIO.setmode(GPIO.BOARD)
