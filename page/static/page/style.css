@@ -1,5 +1,5 @@
 html, body {
-    height: 400px;
+    height: 100vh;
     width: 800px;
 	overflow-y: hidden;
 }
@@ -8,7 +8,7 @@ html, body {
 	display: flex;
 	flex-direction: row;
 	justify-content: space-between;
-	height: 400px;
+	height: 100vh;
 	color: black;
 	font-family: "Lucida Console", Monaco, monospace;
 	list-style-type: none;
@@ -25,12 +25,12 @@ html, body {
 #continents {
 	flex-grow: 1;
 	flex-basis: 33%;
-	height: 400px;
+	height: 95vh;
 	margin-right:2%;
 }
 
 #continents .item {
-	height: 50px;
+	height: 12%;
 	display: flex;
     flex-direction: row;
     align-items: center;
@@ -42,7 +42,7 @@ html, body {
 	flex-basis: 75%;
 	margin-top: 4%;
 	margin-bottom: 4%;
-	height: 400px;
+	height: 88vh;
 	overflow: hidden;
 	overflow-y: scroll;
 }

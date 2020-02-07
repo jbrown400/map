@@ -76,7 +76,7 @@ def shift(val):
 	# print('Binary String: ' + val)
 
 	for i in range(0, len(val)):
-		print(val[i])
+		# print(val[i])
 		GPIO.output(clockPin, GPIO.LOW)
 		GPIO.output(dataPin, int(val[i]) and GPIO.HIGH or GPIO.LOW)
 		GPIO.output(clockPin, GPIO.HIGH)
