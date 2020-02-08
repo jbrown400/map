@@ -2,6 +2,7 @@ html, body {
     height: 100vh;
     width: 800px;
 	overflow-y: hidden;
+	cursor:none;
 }
 
 .container {
